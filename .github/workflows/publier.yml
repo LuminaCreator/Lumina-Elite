@@ -1,0 +1,54 @@
+# Publie automatiquement une version de Lumina Élite à chaque envoi sur la branche « upload ».
+# La branche contient seulement : release/latest.json + release/LuminaElite.exe découpé en morceaux (part-*).
+name: Publier Lumina Élite
+on:
+  push:
+    branches: [upload]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstituer LuminaElite.exe et vérifier
+        run: |
+          cat release/part-* > LuminaElite.exe
+          cp release/latest.json latest.json
+          want=$(jq -r .sha256 latest.json)
+          got=$(sha256sum LuminaElite.exe | cut -d' ' -f1)
+          echo "attendu $want / obtenu $got"
+          test "$want" = "$got"
+          echo "VER=$(jq -r .version latest.json)" >> "$GITHUB_ENV"
+          jq -r .notes latest.json > notes.txt
+      - name: Créer la release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "v$VER" >/dev/null 2>&1; then
+            gh release upload "v$VER" LuminaElite.exe latest.json --clobber
+            gh release edit "v$VER" --latest
+          else
+            gh release create "v$VER" LuminaElite.exe latest.json --title "Lumina Élite $VER" --notes-file notes.txt --latest --target "$GITHUB_SHA"
+          fi
+      - name: Effacer les anciennes versions (si demandé)
+        if: hashFiles('release/purge') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release list --limit 100 --json tagName --jq '.[].tagName' | while read -r t; do
+            if [ "$t" != "v$VER" ]; then echo "suppression de $t"; gh release delete "$t" --yes --cleanup-tag; fi
+          done
+      - name: Retirer les anciens fichiers
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete-asset "v$VER" LuminaGold.exe -y || true
+      - name: Garder seulement les 3 dernières versions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release list --limit 100 --json tagName,createdAt --jq 'sort_by(.createdAt) | reverse | .[3:] | .[].tagName' | while read -r t; do
+            echo "suppression de l'ancienne version $t"
+            gh release delete "$t" --yes --cleanup-tag
+          done
