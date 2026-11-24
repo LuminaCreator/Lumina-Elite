@@ -33,9 +33,24 @@ Une photo un peu terne ? Un clic sur « Améliorer automatiquement » corrige la
 
 <p align="center"><img src=".github/assets/studio.gif" alt="Lumina Studio : amélioration automatique, ambiances et dessin au crayon" width="100%"></p>
 
+Et quand l'intelligence artificielle s'en mêle (**Bêta**) : un clic sur un sujet pour le détourer ou changer l'arrière-plan, une phrase en français pour ajouter un objet à la photo, l'effacement d'une personne en trop, la colorisation des vieilles photos noir et blanc et des retouches portrait automatiques.
+
+## 🧩 Les autres logiciels de la suite
+
+<table>
+<tr><td width="230">💿 <b>Lumina Opus</b></td><td>Transforme tes vidéos en vrais Blu-ray avec menus animés (neige, étoiles, reflet sur le titre…), lus par n'importe quelle platine, avec ou sans Java. Il sait aussi reprendre un ancien disque ISO pour le remanier.</td></tr>
+<tr><td width="230">🎬 <b>Lumina Motion</b></td><td>Montage vidéo multipiste : écran partagé, étalonnage, effets, audio soigné, vidéos de téléphone, GoPro et Ray-Ban Meta, puis envoi direct vers Lumina Opus.</td></tr>
+<tr><td width="230">🖨️ <b>Lumina Cover</b></td><td>Jaquettes Blu-ray, DVD et CD prêtes à imprimer en taille réelle, avec textes libres, calques et séries de disques.</td></tr>
+<tr><td width="230">✨ <b>Lumina Clarity</b> <sup><b>Bêta</b></sup></td><td>Agrandit et améliore les vieilles vidéos en HD grâce à l'IA (animation et vidéos réelles), jusqu'en 4K, avec reprise automatique.</td></tr>
+</table>
+
+## 🧪 Fonctions en Bêta
+
+Tout ce qui utilise l'**intelligence artificielle** est marqué **Bêta** : le clic IA, le détourage, le remplacement de l'arrière-plan, le remplissage génératif, l'effacement d'objets, la colorisation et les filtres portrait de Lumina Studio, ainsi que tout Lumina Clarity. Ces fonctions marchent déjà, mais elles s'améliorent encore à chaque version, et le résultat peut varier selon les images et la carte graphique. Tout se calcule sur votre PC : rien n'est envoyé en ligne. Vos retours sont précieux pour les faire progresser !
+
 ## 📥 Installation
 
-1. **Téléchargez** [Lumina Élite](https://github.com/LuminaCreator/Lumina-Elite/releases/latest/download/LuminaElite.exe) (fichier LuminaElite.exe, environ 140 Mo).
+1. **Téléchargez** [Lumina Élite](https://github.com/LuminaCreator/Lumina-Elite/releases/latest/download/LuminaElite.exe) (fichier LuminaElite.exe, environ 190 Mo).
 2. **Ouvrez-le.** Windows peut afficher « Windows a protégé votre ordinateur » : c'est normal pour un logiciel indépendant. Cliquez sur **Informations complémentaires**, puis sur **Exécuter quand même**.
 3. **Choisissez vos logiciels** et cliquez sur **Installer**. Ils apparaissent dans le menu Démarrer et, si vous le souhaitez, sur le Bureau.
 
@@ -53,6 +68,7 @@ Les notes de chaque version se trouvent dans les [Releases](https://github.com/L
 - 1 Go d'espace libre pour la suite (davantage pour vos projets vidéo)
 - Connexion Internet au premier lancement et pour les mises à jour
 - Un graveur Blu-ray pour graver vos disques
+- Pour les fonctions IA (Bêta) : une carte graphique récente est conseillée (elles marchent aussi sur le processeur, plus lentement)
 
 ## 👋 À propos
 
